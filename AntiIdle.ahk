@@ -4,6 +4,10 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
+AntiSleepDelay := 5 * 60 * 1000	; First number in minutes, keep monitor awake
+AntiIdleDelay := 2 * 1000		; First number in seconds, wiggle mouse every # seconds
+AntiAFKDelay := 5 * 1000		; First number in seconds, press buttons every # seconds
+
 Gui, +Resize
 Gui, Add, Checkbox, y10 vAntiSleepVal, Keep display active
 Gui, Add, Checkbox, vAntiIdleVal, Move mouse
@@ -16,15 +20,15 @@ Return
 
 ButtonStart:
     Gui, Submit, NoHide
-    
-    if (AntiIdleVal)
-        SetTimer, AntiIdle, 2000
+
     if (AntiSleepVal)
-        SetTimer, AntiSleep, 120000
+        SetTimer, AntiSleep, %AntiSleepDelay%    
+    if (AntiIdleVal)
+        SetTimer, AntiIdle, %AntiIdleDelay%
     if (AntiAFKVal)
-        SetTimer, AntiAFK, 5000
+        SetTimer, AntiAFK, %AntiAFKDelay%
     
-    if (AntiIdleVal or AntiSleepVal or AntiAFKVal)
+    if (AntiSleepVal or AntiIdleVal or AntiAFKVal)
         GuiControl, Show, Status
 Return
 
@@ -41,7 +45,7 @@ Return
 
 AntiIdle:
     MouseMove, 0, 1, 0, R
-    Sleep 1000
+    Sleep AntiIdleDelay / 2
     MouseMove, 0, -1, 0, R
 Return
 
