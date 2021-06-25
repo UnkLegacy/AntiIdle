@@ -40,13 +40,14 @@ Return
 
 ButtonStop:
     GuiControl, Hide, Status
+	DllCall("SetThreadExecutionState", UInt, 0x80000000)	; Clear flags
     SetTimer, AntiIdle, off
     SetTimer, AntiSleep, off
     SetTimer, AntiAFK, off
 Return
 
 AntiSleep:
-    DllCall("SetThreadExecutionState", UInt, 0x80000003)
+    DllCall("SetThreadExecutionState", UInt, 0x80000003)	; Forces Display on and system in Working state
 Return
 
 AntiIdle:
