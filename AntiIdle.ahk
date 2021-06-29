@@ -8,6 +8,7 @@ AntiSleepDelay := 5 * 60 * 1000	; First number in minutes, keep monitor awake
 AntiIdleDelay := 2 * 1000		; First number in seconds, wiggle mouse every # seconds
 AntiAFKDelay := 5 * 1000		; First number in seconds, press buttons every # seconds
 
++F3::
 Gui, +Resize
 Gui, Add, Checkbox, y10 vAntiSleepVal, Keep display active
 Gui, Add, Checkbox, vAntiIdleVal, Move mouse
@@ -62,6 +63,9 @@ AntiAFK:
 Return
 
 GuiClose:
+Gui, Destroy
+Return
+
+Esc::
 ExitApp
 
-Esc::ExitApp
