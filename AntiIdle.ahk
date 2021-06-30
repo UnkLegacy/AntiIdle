@@ -10,8 +10,8 @@ AntiAFKDelay := 5 * 1000		; First number in seconds, press buttons every # secon
 
 +F3::
 Gui, +Resize
-Gui, Add, Checkbox, y10 vAntiSleepVal, Keep display active
-Gui, Add, Checkbox, vAntiIdleVal, Move mouse
+Gui, Add, Checkbox, Checked y10 vAntiSleepVal, Keep display active
+Gui, Add, Checkbox, Checked vAntiIdleVal, Move mouse
 Gui, Add, Checkbox, vAntiAFKVal, Press modifier keys
 Gui, Add, Edit, vStopDelayVal w30, 60
 Gui, Add, Text, xp+35 yp+5, Stop Idle after `# minutes
