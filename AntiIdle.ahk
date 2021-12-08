@@ -58,15 +58,17 @@ AntiIdle:
 Return
 
 AntiAFK:
-    Sleep 5000
-    Send /
-    Sleep 1000
-    Send, ac "Draw"
-    Send, {enter}
-    Sleep 1000
+    Sleep, 1000
     Send, /
-    Sleep 1000
-    Send, ac "Redraw"
+    Sleep, 1000
+    Send, bm
+	Sleep, 1000
+    Send, {enter}
+    Sleep, 1000
+    Send, /
+    Sleep, 1000
+    Send, bm
+	Sleep, 1000
     Send, {enter}
 Return
 
