@@ -6,7 +6,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 AntiSleepDelay := 5 * 60 * 1000	; First number in minutes, keep monitor awake
 AntiIdleDelay := 2 * 1000		; First number in seconds, wiggle mouse every # seconds
-AntiAFKDelay := 10 * 60 * 1000	; First number in minutes, press buttons every # minutes
+AntiAFKDelay := 9 * 60 * 1000	; First number in minutes, press buttons every # minutes
 
 +F3::
 Gui, +Resize
