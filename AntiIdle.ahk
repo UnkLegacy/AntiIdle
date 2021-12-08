@@ -6,13 +6,13 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 AntiSleepDelay := 5 * 60 * 1000	; First number in minutes, keep monitor awake
 AntiIdleDelay := 2 * 1000		; First number in seconds, wiggle mouse every # seconds
-AntiAFKDelay := 5 * 1000		; First number in seconds, press buttons every # seconds
+AntiAFKDelay := 10 * 60 * 1000	; First number in minutes, press buttons every # minutes
 
 +F3::
 Gui, +Resize
 Gui, Add, Checkbox, Checked y10 vAntiSleepVal, Keep display active
 Gui, Add, Checkbox, Checked vAntiIdleVal, Move mouse
-Gui, Add, Checkbox, vAntiAFKVal, Press modifier keys
+Gui, Add, Checkbox, vAntiAFKVal, Anti-AFK for FFXIV
 Gui, Add, Edit, vStopDelayVal w30, 60
 Gui, Add, Text, xp+35 yp+5, Stop Idle after `# minutes
 Gui, Add, Button, x10 y+10 w50, Start
@@ -58,8 +58,16 @@ AntiIdle:
 Return
 
 AntiAFK:
-    Send, {Shift}
-    Send, {Ctrl}
+    Sleep 5000
+    Send /
+    Sleep 1000
+    Send, ac "Draw"
+    Send, {enter}
+    Sleep 1000
+    Send, /
+    Sleep 1000
+    Send, ac "Redraw"
+    Send, {enter}
 Return
 
 GuiClose:
